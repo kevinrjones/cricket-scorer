@@ -16,6 +16,7 @@ kotlinxSerializationVersion = "1.7.3"
 roomVersion = "2.7.1"
 kspVersion = "2.1.21-2.0.1"
 adaptive = "1.1.0"
+arrow_version = "2.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,6 +45,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationComposeVersion" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "daggerHiltVersion" }
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

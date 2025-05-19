@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.compose.adaptive)
+    implementation(libs.arrow.core  )
+
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)

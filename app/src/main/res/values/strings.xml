@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">scorer</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_a_scorecard_descrirption">Add a scorecard</string>
+    <string name="team_label">Team</string>
+    <string name="opponents_label">Opponents</string>
+    <string name="start_date_label">Start Date</string>
+    <string name="duration">Duration</string>
+    <string name="saved_scorecard">Scorecard created</string>
+    <string name="unable_to_save_scorecard">Unable to save scorecard</string>
+    <string name="missing_team_name">You must provide the team name</string>
 </resources>
