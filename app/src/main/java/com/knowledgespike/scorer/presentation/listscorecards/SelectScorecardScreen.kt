@@ -31,11 +31,11 @@ fun SelectScorecardScreen(
                 Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_a_scorecard_descrirption))
             }
         }
-    ) { innerPadding ->
+    ) { _ ->
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
-                .background(color = MaterialTheme.colorScheme.surface),
+                .background(color = MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,
         ) {
 

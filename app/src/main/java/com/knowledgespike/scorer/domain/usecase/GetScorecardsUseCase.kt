@@ -13,7 +13,7 @@ class GetScorecardsUseCase(private val dao: ScorecardDao) {
                 when (orderBy) {
                     SortByTeam -> scorecards.sortedBy { it.teamName }
                     SortByOpponents -> scorecards.sortedBy { it.opponentsName }
-                    SortByDate -> scorecards.sortedBy { it.matchStartDate }
+                    SortByDate -> scorecards.sortedBy { it.matchDate }
                 }
             }
     }

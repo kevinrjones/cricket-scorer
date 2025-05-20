@@ -10,7 +10,6 @@ import com.knowledgespike.scorer.domain.usecase.ScorerUseCases
 import com.knowledgespike.scorer.domain.usecase.SortByDate
 import com.knowledgespike.scorer.domain.usecase.SortOrder
 import com.knowledgespike.scorer.presentation.model.VmScorecard
-import com.knowledgespike.scorer.presentation.model.toValidScorecard
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn

@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,14 +28,12 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
                     NavHost(
                         navController = navController,
-                        startDestination = ScorecardsListDestination,
-                        modifier = Modifier.padding(innerPadding)
+                        startDestination = ScorecardsListDestination
                     ) {
                         composable<ScorecardsListDestination> {
-                            SelectScorecardScreen(modifier = Modifier, onAddScorecard = {
+                            SelectScorecardScreen(modifier = Modifier.padding(innerPadding), onAddScorecard = {
                                 navController.navigate(
                                     AddEditScorecardDestination(-1)
                                 )
