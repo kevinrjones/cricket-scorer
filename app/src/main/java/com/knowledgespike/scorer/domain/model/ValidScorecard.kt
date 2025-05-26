@@ -12,6 +12,7 @@ import com.knowledgespike.scorer.type.error.ScorecardError
 
 @ConsistentCopyVisibility
 data class ValidScorecard private constructor(
+    val id: Int?,
     val teamName: String,
     val opponentsName: String,
     val venue: String,
@@ -34,6 +35,7 @@ data class ValidScorecard private constructor(
     companion object {
         @OptIn(ExperimentalRaiseAccumulateApi::class)
         operator fun invoke(
+            id: Int?,
             teamName: String,
             opponentsName: String,
             venue: String,
@@ -76,6 +78,7 @@ data class ValidScorecard private constructor(
                     )
                 }
                 ValidScorecard(
+                    id,
                     teamName,
                     opponentsName,
                     venue,
@@ -104,6 +107,7 @@ data class ValidScorecard private constructor(
 
 fun ValidScorecard.toEntity(): Scorecard {
     return Scorecard(
+        id = this.id,
         teamName = this.teamName,
         opponentsName = this.opponentsName,
         venue = this.venue,

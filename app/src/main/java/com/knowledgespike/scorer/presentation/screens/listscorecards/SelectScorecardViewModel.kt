@@ -1,4 +1,4 @@
-package com.knowledgespike.scorer.presentation.listscorecards
+package com.knowledgespike.scorer.presentation.screens.listscorecards
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State

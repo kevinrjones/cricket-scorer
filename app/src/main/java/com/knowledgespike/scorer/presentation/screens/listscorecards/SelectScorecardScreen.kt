@@ -1,10 +1,11 @@
-package com.knowledgespike.scorer.presentation.listscorecards
+package com.knowledgespike.scorer.presentation.screens.listscorecards
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
@@ -16,29 +17,45 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.knowledgespike.scorer.R
+import com.knowledgespike.scorer.presentation.components.ScorecardListItem
+import androidx.compose.foundation.lazy.items
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SelectScorecardScreen(
-    modifier: Modifier,
-    onAddScorecard: () -> Unit,
+    modifier: Modifier = Modifier,
+    onAddOrEditScorecard: (Int?) -> Unit,
+    onScore: (Int?) -> Unit,
     selectScorecardViewModel: SelectScorecardViewModel = hiltViewModel(),
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         floatingActionButton = {
-            FloatingActionButton(onClick = onAddScorecard) {
-                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_a_scorecard_descrirption))
+            FloatingActionButton(onClick = { onAddOrEditScorecard(null) }) {
+                Icon(
+                    Icons.Default.Add,
+                    contentDescription = stringResource(R.string.add_a_scorecard_descrirption)
+                )
             }
         }
-    ) { _ ->
+    ) { innerPadding ->
         Column(
             modifier = Modifier
+                .padding(innerPadding)
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,
         ) {
-
+            LazyColumn {
+                items(selectScorecardViewModel.scorecards.value) {
+                    ScorecardListItem(
+                        scorecard = it,
+                        onEdit = {
+                            onAddOrEditScorecard(it)
+                        },
+                        onScore = onScore
+                    )
+                }
+            }
         }
     }
 }

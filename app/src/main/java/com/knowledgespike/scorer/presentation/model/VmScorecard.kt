@@ -7,6 +7,7 @@ import com.knowledgespike.scorer.domain.model.ValidScorecard
 import com.knowledgespike.scorer.type.error.ScorecardError
 
 data class VmScorecard(
+    val id: Int? = null,
     val teamName: String = "",
     val opponentsName: String = "",
     val venue: String = "",
@@ -30,6 +31,7 @@ data class VmScorecard(
         fun fromEntity(scorecard: Scorecard): VmScorecard {
 
             return VmScorecard(
+                id = scorecard.id,
                 teamName = scorecard.teamName,
                 opponentsName = scorecard.opponentsName,
                 venue = scorecard.venue,
@@ -55,6 +57,7 @@ data class VmScorecard(
 
 fun VmScorecard.toValidScorecard(): Either<NonEmptyList<ScorecardError>, ValidScorecard> =
     ValidScorecard(
+        id = this.id,
         teamName = this.teamName,
         opponentsName = this.opponentsName,
         venue = this.venue,

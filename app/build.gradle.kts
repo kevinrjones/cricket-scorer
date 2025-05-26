@@ -55,13 +55,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.materialWindow)
     implementation(libs.androidx.material.icons)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.compose.adaptive)
-    implementation(libs.arrow.core  )
+    implementation(libs.arrow.core)
+    implementation(libs.androidx.window)
 
 
     implementation(libs.androidx.hilt.navigation.compose)

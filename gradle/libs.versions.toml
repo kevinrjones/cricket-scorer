@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.9.0"
 activityCompose = "1.10.1"
-composeBom = "2025.05.00"
+composeBom = "2025.05.01"
 daggerHiltVersion = "2.51.1"
 hiltNavigationComposeVersion = "1.2.0"
 navigationComposeVersion = "2.9.0"
@@ -17,6 +17,7 @@ roomVersion = "2.7.1"
 kspVersion = "2.1.21-2.0.1"
 adaptive = "1.1.0"
 arrow_version = "2.0.1"
+androidx-window = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,6 +32,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -43,6 +45,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-compose-adaptive = { module = "androidx.compose.material3.adaptive:adaptive", version.ref="adaptive"}
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref="kotlinxSerializationVersion" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationComposeVersion" }
+androidx-window = { module = "androidx.window:window", version.ref = "androidx-window" }
+androidx-window-core = { module = "androidx.window:window-core", version.ref = "androidx-window" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "daggerHiltVersion" }
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow_version" }

@@ -1,4 +1,4 @@
-package com.knowledgespike.scorer.presentation.addeditscorecard
+package com.knowledgespike.scorer.presentation.screens.addeditscorecard
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -46,15 +46,19 @@ class AddEditScorecardViewModel @Inject constructor(
     var fieldChanges = FieldChanges()
 
     init {
-        val scorecardId = savedStateHandle.get<Int>("scorecardId") ?: -1
+        val scorecardId = savedStateHandle.get<Int>("scorecardId")
         findScorecard(scorecardId)
     }
 
-    private fun findScorecard(scorecardId: Int) {
+    private fun findScorecard(scorecardId: Int?) {
         viewModelScope.launch {
-            val scorecardEntity = useCases.getScorecard(scorecardId)
-            _scorecard.value =
-                scorecardEntity?.let { VmScorecard.fromEntity(it) } ?: VmScorecard()
+            if (scorecardId == null) {
+                _scorecard.value = VmScorecard()
+            } else {
+                val scorecardEntity = useCases.getScorecard(scorecardId)
+                _scorecard.value =
+                    scorecardEntity?.let { VmScorecard.fromEntity(it) } ?: VmScorecard()
+            }
         }
     }
 
@@ -68,21 +72,17 @@ class AddEditScorecardViewModel @Inject constructor(
             AddEditScorecardUiEvent.SaveScorecard -> {
                 viewModelScope.launch {
 
-                    if (scorecard.value.teamName.isEmpty()) {
-                        _eventFlow.emit(AddEditScorecardEvent.ErrorSavingScorecard)
-                    } else {
-                        // todo: log the issues here - need to add analytics
-                        val validationResult = scorecard.value.toValidScorecard()
-                        validationResult.fold(
-                            ifLeft = {
-                                _eventFlow.emit(AddEditScorecardEvent.ErrorSavingScorecard)
-                            },
-                            ifRight = {
-                                useCases.upsertScorecard(scorecard = it)
-                                _eventFlow.emit(AddEditScorecardEvent.SavedScorecard)
-                            }
-                        )
-                    }
+                    // todo: log the issues here - need to add analytics
+                    val validationResult = scorecard.value.toValidScorecard()
+                    validationResult.fold(
+                        ifLeft = {
+                            _eventFlow.emit(AddEditScorecardEvent.ErrorSavingScorecard)
+                        },
+                        ifRight = {
+                            useCases.upsertScorecard(scorecard = it)
+                            _eventFlow.emit(AddEditScorecardEvent.SavedScorecard)
+                        }
+                    )
                 }
             }
 

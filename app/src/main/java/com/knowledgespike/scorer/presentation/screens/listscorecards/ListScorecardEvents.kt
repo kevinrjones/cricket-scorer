@@ -1,4 +1,4 @@
-package com.knowledgespike.scorer.presentation.listscorecards
+package com.knowledgespike.scorer.presentation.screens.listscorecards
 
 import com.knowledgespike.scorer.domain.model.ValidScorecard
 import com.knowledgespike.scorer.domain.usecase.SortOrder

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">scorer</string>
     <string name="save">Save</string>
+    <string name="edit">Edit</string>
     <string name="cancel">Cancel</string>
+    <string name="score">Score</string>
     <string name="add_a_scorecard_descrirption">Add a scorecard</string>
     <string name="team_label">Team</string>
     <string name="opponents_label">Opponents</string>
@@ -21,7 +23,7 @@
     <string name="team_winning_toss_label">Team winning toss</string>
     <string name="weather_label">Weather</string>
     <string name="pitch_conditions_label">Pitch conditions</string>
-    <string name="saved_scorecard">Scorecard created</string>
+    <string name="saved_scorecard">Scorecard saved</string>
     <string name="unable_to_save_scorecard">Unable to save scorecard</string>
     <string name="missing_team_name">You must provide the team name</string>
     <string name="missing_opponents_name">You must provide the opponents name</string>
