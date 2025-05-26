@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.knowledgespike.scorer.R
 import com.knowledgespike.scorer.ui.theme.ScorerTheme
@@ -90,91 +91,77 @@ fun AddEditScorecardScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.team_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.teamName,
-                onValueChange = {
-                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredTeamName(it))
-                },
+                labelId = R.string.team_label,
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.teamName,
                     viewModel.fieldChanges.teamNameChanged
-                )
-            )
+                ),
+                errorMessageId = R.string.missing_team_name,
+                onValueChange = {
+                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredTeamName(it))
+                })
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.opponents_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.opponentsName,
-                onValueChange = {
-                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredOpponentsName(it))
-                },
+                labelId = R.string.opponents_label,
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.opponentsName,
                     viewModel.fieldChanges.opponentsNameChanged
-                )
+                ),
+                errorMessageId = R.string.missing_opponents_name,
+                onValueChange = {
+                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredOpponentsName(it))
+                }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.venue_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.venue,
-                onValueChange = {
-                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredVenue(it))
-                },
+                labelId = R.string.venue_label,
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.venue,
                     viewModel.fieldChanges.venueChanged
-                )
+                ),
+                errorMessageId = R.string.missing_venue,
+                onValueChange = {
+                    viewModel.onEvent(AddEditScorecardUiEvent.EnteredVenue(it))
+                },
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.title_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.title,
+                labelId = R.string.title_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredTitle(it))
                 },
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.title,
                     viewModel.fieldChanges.titleChanged
-                )
+                ),
+                errorMessageId = R.string.missing_match_title
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.date_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.matchDate,
+                labelId = R.string.date_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredDate(it))
                 },
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.matchDate,
                     viewModel.fieldChanges.dateChanged
-                )
+                ),
+                errorMessageId = R.string.missing_date
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.batting_side_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.batting_side_label,
                 value = scorecard.battingSide,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredBattingSide(it))
@@ -182,92 +169,73 @@ fun AddEditScorecardScreen(
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.battingSide,
                     viewModel.fieldChanges.battingSideChanged
-                )|| !(viewModel.scorecard.value.battingSide == viewModel.scorecard.value.teamName
-                        || viewModel.scorecard.value.battingSide == viewModel.scorecard.value.opponentsName)
+                ) || !(viewModel.scorecard.value.battingSide == viewModel.scorecard.value.teamName
+                        || viewModel.scorecard.value.battingSide == viewModel.scorecard.value.opponentsName),
+                errorMessageId = R.string.invalid_batting_side_name
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.umpire1_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.umpire1Name ?: "",
+                labelId = R.string.umpire1_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredUmpire1Name(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.umpire2_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.umpire2Name ?: "",
+                labelId = R.string.umpire2_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredUmpire2Name(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.third_umpire_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.thirdUmpireName ?: "",
+                labelId = R.string.third_umpire_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredThirdUmpireName(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.referee_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.refereeName ?: "",
+                labelId = R.string.referee_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredReferee(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.scorer1_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.scorer1Name,
+                labelId = R.string.scorer1_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredScorer1Name(it))
                 },
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.scorer1Name,
                     viewModel.fieldChanges.scorer1NameChanged
-                )
+                ),
+                errorMessageId = R.string.missing_scorer
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.scorer2_label))
-                },
+            AddEditScorecardScreenField(
                 value = scorecard.scorer2Name ?: "",
+                labelId = R.string.scorer2_label,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredScorer2Name(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.type_of_match_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.type_of_match_label,
                 value = scorecard.typeOfMatch,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredTypeOfMatch(it))
@@ -275,15 +243,13 @@ fun AddEditScorecardScreen(
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.typeOfMatch,
                     viewModel.fieldChanges.typeOfMatchChanged
-                )
+                ),
+                errorMessageId = R.string.missing_type_of_match
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.duration_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.duration_label,
                 value = scorecard.duration,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredDuration(it))
@@ -291,15 +257,13 @@ fun AddEditScorecardScreen(
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.duration,
                     viewModel.fieldChanges.durationChanged
-                )
+                ),
+                errorMessageId = R.string.missing_duration
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.start_time_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.start_time_label,
                 value = scorecard.startTime,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredStartTime(it))
@@ -307,15 +271,13 @@ fun AddEditScorecardScreen(
                 isError = viewModel.isEmpty(
                     viewModel.scorecard.value.startTime,
                     viewModel.fieldChanges.startTimeChanged
-                )
+                ),
+                errorMessageId = R.string.missing_start_time
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.team_winning_toss_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.team_winning_toss_label,
                 value = scorecard.teamWinningToss,
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredTeamWinningToss(it))
@@ -324,34 +286,28 @@ fun AddEditScorecardScreen(
                     viewModel.scorecard.value.teamWinningToss,
                     viewModel.fieldChanges.teamWinningTossChanged
                 ) || !(viewModel.scorecard.value.teamWinningToss == viewModel.scorecard.value.teamName
-                        || viewModel.scorecard.value.teamWinningToss == viewModel.scorecard.value.opponentsName)
+                        || viewModel.scorecard.value.teamWinningToss == viewModel.scorecard.value.opponentsName),
+                errorMessageId = R.string.invalid_team_winning_toss_name
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.weather_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.weather_label,
                 value = scorecard.weather ?: "",
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredWeather(it))
-                },
+                }
             )
             Spacer(modifier = Modifier.height(4.dp))
 
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                label = {
-                    Text(stringResource(R.string.pitch_conditions_label))
-                },
+            AddEditScorecardScreenField(
+                labelId = R.string.pitch_conditions_label,
                 value = scorecard.pitchCondition ?: "",
                 onValueChange = {
                     viewModel.onEvent(AddEditScorecardUiEvent.EnteredPitchCondition(it))
                 }
             )
             Spacer(modifier = Modifier.height(4.dp))
-
 
 
             Row(
@@ -374,6 +330,36 @@ fun AddEditScorecardScreen(
             Spacer(modifier = Modifier.height(4.dp))
 
         }
+    }
+}
+
+@Composable
+fun AddEditScorecardScreenField(
+    value: String,
+    labelId: Int,
+    isError: Boolean = false,
+    errorMessageId: Int? = null,
+    onValueChange: (String) -> Unit
+) {
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        label = {
+            Text(stringResource(labelId))
+        },
+        value = value,
+        onValueChange = {
+            onValueChange(it)
+
+        },
+        isError = isError,
+        singleLine = true
+    )
+    if (isError && errorMessageId != null) {
+        Text(
+            text = stringResource(errorMessageId),
+            color = MaterialTheme.colorScheme.error,
+            fontSize = 16.sp
+        )
     }
 }
 
