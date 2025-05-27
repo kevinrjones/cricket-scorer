@@ -23,6 +23,7 @@ fun ScoreAppNavGraph(
     ) {
         composable<ScorecardsListDestination> {
             SelectScorecardScreen(
+                isExpandedScreen = isExpandedScreen,
                 onAddOrEditScorecard = {
                     navController.navigate(
                         AddEditScorecardDestination(it)

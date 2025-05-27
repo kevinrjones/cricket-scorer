@@ -2,7 +2,9 @@ package com.knowledgespike.scorer.presentation.screens.listscorecards
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,6 +21,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.knowledgespike.scorer.R
 import com.knowledgespike.scorer.presentation.components.ScorecardListItem
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun SelectScorecardScreen(
@@ -26,6 +30,7 @@ fun SelectScorecardScreen(
     onAddOrEditScorecard: (Int?) -> Unit,
     onScore: (Int?) -> Unit,
     selectScorecardViewModel: SelectScorecardViewModel = hiltViewModel(),
+    isExpandedScreen: Boolean,
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -38,14 +43,26 @@ fun SelectScorecardScreen(
             }
         }
     ) { innerPadding ->
+
+        val sizeFraction = if (!isExpandedScreen) {
+            1f
+        } else {
+            0.5f
+        }
+
         Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background),
-            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            LazyColumn {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize(sizeFraction),
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 items(selectScorecardViewModel.scorecards.value) {
                     ScorecardListItem(
                         scorecard = it,
