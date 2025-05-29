@@ -9,3 +9,5 @@ object ScorecardsListDestination : ScorerDestination()
 
 @Serializable
 data class AddEditScorecardDestination(val scorecardId: Int?) : ScorerDestination()
+@Serializable
+data class ScoreMatchDestination(val scorecardId: Int?) : ScorerDestination()

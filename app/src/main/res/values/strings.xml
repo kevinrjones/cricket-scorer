@@ -36,4 +36,8 @@
     <string name="missing_start_time">You must provide the start time</string>
     <string name="invalid_batting_side_name">You must provide the batting side and it must be the same as either team or opponents</string>
     <string name="invalid_team_winning_toss_name">You must provide the name of the team winning the toss and it must be the same as either team or opponents</string>
+    <string name="time_label">Time</string>"
+    <string name="over_label">Overs</string>"
+    <string name="bowlers_label">Bowlers</string>"
+    <string name="end_label">End</string>"
 </resources>

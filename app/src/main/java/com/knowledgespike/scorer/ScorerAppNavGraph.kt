@@ -5,11 +5,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.knowledgespike.scorer.presentation.ScoreMatchDestination
 import com.knowledgespike.scorer.presentation.AddEditScorecardDestination
 import com.knowledgespike.scorer.presentation.ScorecardsListDestination
 import com.knowledgespike.scorer.presentation.ScorerDestination
 import com.knowledgespike.scorer.presentation.screens.addeditscorecard.AddEditScorecardScreen
 import com.knowledgespike.scorer.presentation.screens.listscorecards.SelectScorecardScreen
+import com.knowledgespike.scorer.presentation.screens.scorematch.ScoreMatchScreen
 
 @Composable
 fun ScoreAppNavGraph(
@@ -29,13 +31,26 @@ fun ScoreAppNavGraph(
                         AddEditScorecardDestination(it)
                     )
                 },
-                onScore = {})
+                onScore = {
+                    navController.navigate(
+                        ScoreMatchDestination(it)
+                    )
+                })
         }
 
         composable<AddEditScorecardDestination> {
             AddEditScorecardScreen(
                 isExpandedScreen = isExpandedScreen,
                 onSaveOrCancel = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<ScoreMatchDestination> {
+            ScoreMatchScreen(
+                isExpandedScreen = isExpandedScreen,
+                onDone = {
                     navController.popBackStack()
                 }
             )
