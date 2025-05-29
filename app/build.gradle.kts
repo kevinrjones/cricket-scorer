@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.androidx.compose.adaptive)
     implementation(libs.arrow.core)
     implementation(libs.androidx.window)
+    implementation(libs.timber)
 
 
     implementation(libs.androidx.hilt.navigation.compose)

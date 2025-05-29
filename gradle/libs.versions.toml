@@ -18,6 +18,7 @@ kspVersion = "2.1.21-2.0.1"
 adaptive = "1.1.0"
 arrow_version = "2.0.1"
 androidx-window = "1.4.0"
+timber_version = "5.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +51,7 @@ androidx-window-core = { module = "androidx.window:window-core", version.ref = "
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "daggerHiltVersion" }
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow_version" }
+timber = {module = "com.jakewharton.timber:timber", version.ref = "timber_version"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
