@@ -21,3 +21,5 @@ fun ScorerApp(widthSizeClass: WindowWidthSizeClass) {
     }
 
 }
+
+

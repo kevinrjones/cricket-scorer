@@ -50,7 +50,7 @@ fun ScoreAppNavGraph(
         composable<ScoreMatchDestination> {
             ScoreMatchScreen(
                 isExpandedScreen = isExpandedScreen,
-                onDone = {
+                onCloseScreen = {
                     navController.popBackStack()
                 }
             )
